@@ -1,5 +1,5 @@
 # Báo cáo cá nhân — Ngày 11
-Họ tên: Nguyễn Văn Nhật              Mã học viên: 2A202603273  
+Họ tên: Nguyễn Văn Nhất              Mã học viên: 2A202603273  
 Phiên bản CVAT (Help → About): v2.74.1 (CVAT chạy local, đã xác nhận với người hướng dẫn)  
 Guideline: Road v1.0    Lần nộp (`revision` trong manifest): 1  
 Thời điểm export (ngày giờ trên CVAT): 21/11/2026, manifest tạo lúc 03:45 UTC    Số lần nộp lại sau Rework: 0  
@@ -41,7 +41,7 @@ Cả 20 ảnh bắt buộc có đủ bốn tag (manifest: `images_all_tags` = 12
 | B01, B02 | lane | vẽ lane hay không | không vẽ lane | Trọng tâm ảnh là crosswalk / đèn, biển; không vẽ vạch không nhìn rõ |
 
 ## 4. Phiếu QC 1 nhận được
-Bạn kiểm lô của tôi: ______ (phiếu `qc1-front-A01-A06.md`, kiểm A01–A06)  Quyết định nhận được: **Rework** (4 lỗi nặng; lỗi chính 11 / 80 nhãn = 13,75 %)
+Bạn kiểm lô của tôi: rồi (phiếu `qc1-front-A01-A06.md`, kiểm A01–A06)  Quyết định nhận được: **Rework** (4 lỗi nặng; lỗi chính 11 / 80 nhãn = 13,75 %)
 
 | Mã lỗi | Số lỗi | Đồng ý? | Đã sửa? |
 | --- | ---: | --- | --- |
@@ -58,20 +58,16 @@ Phần chưa sửa sẽ làm trong buffer, rồi nộp lại với `--revision 2
 ## 5. Kiểm file export
 | File | Mở lại được? | Số shape ảnh 1 (job / file) | Số shape ảnh 2 (job / file) | Tag camera có trong XML? |
 | --- | --- | --- | --- | --- |
-| nguyenvannhat-front.zip | Có (`road_check lint` đọc được 12 ảnh) | A01: __ / 8 | A02: __ / 6 | Có |
-| nguyenvannhat-fisheye.zip | Có (`road_check lint` đọc được 8 ảnh) | B01: __ / 5 | B02: __ / 7 | Có |
+| nguyenvannhat-front.zip | Có (`road_check lint` đọc được 12 ảnh) | A01: 8 / 8 | A02: 6 / 6 | Có |
+| nguyenvannhat-fisheye.zip | Có (`road_check lint` đọc được 8 ảnh) | B01: 5 / 5 | B02: 7 / 7 | Có |
 
 Số shape trong file không tính 4 tag. `contains_images` = `false` cho cả hai file. Lint lúc tạo manifest: nặng 6 (đều là QC1-02 ở A05–A09, chờ coach xác nhận), chính 13, nhẹ 5.
 
 ## 6. Ảnh chụp màn hình
-1. Tab Labels của project.
-   ![Labels](screenshots/01-labels.png)
-2. Một ảnh camera trước đã gán đủ (làn, vùng lái, đèn/biển).
-   ![Front](screenshots/02-front.png)
-3. Một ảnh fisheye đã gán, phóng to đoạn polyline cong.
-   ![Fisheye](screenshots/03-fisheye.png)
+1. Tab Labels của project.(https://drive.google.com/drive/folders/1QS-Ho2Z1eBympSkcOROMTkoitJ76NNQT?usp=sharing)
+2. Một ảnh camera trước đã gán đủ (làn, vùng lái, đèn/biển).(https://drive.google.com/drive/folders/1QS-Ho2Z1eBympSkcOROMTkoitJ76NNQT?usp=sharing)
+3. Một ảnh fisheye đã gán, phóng to đoạn polyline cong.(https://drive.google.com/drive/folders/1QS-Ho2Z1eBympSkcOROMTkoitJ76NNQT?usp=sharing)
 4. Một đoạn XML có <polyline label="lane">.
-   ![XML](screenshots/04-xml.png)
 
 ## 7. Tự đánh giá
 Lỗi bạn mắc nhiều nhất hôm nay (theo mã QC1-xx), và cách tránh ở Ngày 20: **QC1-11** (fisheye): polyline chỉ có 2–3 điểm nên không bám được cung cong, và `edge_zone` không khớp với vị trí tâm hộp so với 80 % bán kính. Ở Ngày 20 tôi sẽ đặt 6–10 điểm cho mỗi vạch fisheye, dày ở vòng ngoài, và chạy lint ngay sau mỗi ảnh fisheye để kiểm `edge_zone`. Lỗi thứ hai là **QC1-04** ở A08: sáu polyline vẽ từ xa về gần. Cách tránh: luôn click điểm đầu tiên ở đáy ảnh.
